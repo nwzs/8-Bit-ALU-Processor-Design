@@ -69,6 +69,16 @@ This project demonstrates how control units and datapaths interact in processor 
 
 The design was verified using waveform simulation in Quartus to confirm correct ALU outputs for each state.
 
+#### **ALU_1: Arithmetic & Logic Operations**
+This simulation confirms the execution of basic arithmetic (addition/subtraction) and bitwise logic. You can observe the `Result` bus updating as the FSM cycles through instruction states.
+
+<img width="685" height="346" alt="Screenshot 2026-05-02 174556" src="https://github.com/user-attachments/assets/1df45ce3-71fc-437c-acea-c648bbab96b4" />
+
+#### **ALU_2: Complex Bit Manipulations**
+This simulation verifies the custom bit-shuffling logic, including rotations and inversions. It demonstrates the initial system `reset` and the synchronous `load` of operands A and B.
+
+<img width="684" height="364" alt="Screenshot 2026-05-02 174530" src="https://github.com/user-attachments/assets/86e71985-8407-46c7-baf1-4f5d6b40e7c3" />
+
 ## Results
 
 - Successfully implemented and tested on DE2 FPGA board  
