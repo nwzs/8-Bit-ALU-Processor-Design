@@ -8,7 +8,7 @@ In this project, I designed and implemented a microcoded 8-bit processing unit o
 * Control Path: Developed a 4-bit FSM that cycles through instruction indices. A 4x16 decoder processes this output to generate a one-hot microcode control bus, which enables specific ALU functions.
 
 * Dual ALU Architecture:
-*  ALU_1: Performs nine fundamental arithmetic and logic operations (Addition, Subtraction, AND/OR logic).
-*  ALU_2: Implements complex bit-manipulation tasks (4-bit rotations, bit reversals, and conditional inversions) using the same established control path.
+  * ALU_1: Performs nine fundamental arithmetic and logic operations (Addition, Subtraction, AND/OR logic).
+  * ALU_2: Implements complex bit-manipulation tasks (4-bit rotations, bit reversals, and conditional inversions) using the same established control path.
 
 * Verification: Validated the digital logic through functional simulation waveforms in Quartus before hardware deployment.
