@@ -1,14 +1,76 @@
-## 8-Bit Micro-coded ALU Processor
-In this project, I designed and implemented a microcoded 8-bit processing unit on an Altera DE2 FPGA board. The system features a custom-designed 4-bit Finite State Machine (FSM) that serves as the control unit, orchestrating operations across two distinct Arithmetic Logic Units (ALUs) 
+# 8-Bit Micro-coded ALU Processor
+This project implements an 8-bit microcoded processor on an FPGA, using a finite state machine (FSM) to control arithmetic and logic operations across a shared datapath.
 
-## Key Implementation Details
+This project demonstrates how control units and datapaths interact in processor design, a fundamental concept in computer engineering.
 
-* Hardware Platform: Leveraged the Terasic DE2 board, utilizing physical switches for operant inputs (A and B) and LEDs/7-segment displays for a real-time state and output visualization.
+## Key Components
 
-* Control Path: Developed a 4-bit FSM that cycles through instruction indices. A 4x16 decoder processes this output to generate a one-hot microcode control bus, which enables specific ALU functions.
+* **Registers (Latch 1 & 2):** Two 8-bit registers used to capture and hold operands \(A\) and \(B\) from the DE2 board's physical switches.
 
-* Dual ALU Architecture:
-  * ALU_1: Performs nine fundamental arithmetic and logic operations (Addition, Subtraction, AND/OR logic).
-  * ALU_2: Implements complex bit-manipulation tasks (4-bit rotations, bit reversals, and conditional inversions) using the same established control path.
+* **Control Unit (FSM):** A 4-bit state machine that cycles through states 0–8, acting as the instruction sequencer.
 
-* Verification: Validated the digital logic through functional simulation waveforms in Quartus before hardware deployment.
+* **4x16 Decoder:** Converts the FSM state into a "one-hot" microcode vector, ensuring only one ALU operation is active per clock cycle.
+
+* **Dual ALUs:** Two separate logic blocks (ALU_1 for basic math, ALU_2 for complex bit manipulation) that share the same control path.
+  * **ALU_1:** Implements core arithmetic and logic operations (addition, subtraction, bitwise logic).
+    
+  * **ALU_2:** Demonstrates datapath flexibility by supporting advanced bit manipulations (rotations, shifts, inversions) using the same control structure.
+
+## Hardware Mapping (DE2 Board)
+
+* **Switches (SW):** Used for manual data input of 8-bit operands A and B.
+
+* **Keys (Buttons):** Used for `Clock` pulses and system `Reset`.
+
+* **LEDs/7-Segment:** Provide visual feedback of the current FSM state and the 8-bit `Result`.
+
+## Inputs and Signals
+
+- `A[7:0]` – 8-bit input operand A  
+- `B[7:0]` – 8-bit input operand B  
+- `OP[15:0]` – Control signals from decoder (one-hot encoded)  
+- `clk` – System clock  
+- `reset` – Resets FSM and registers  
+- `load_A` – Loads value into register A  
+- `load_B` – Loads value into register B  
+- `Result[7:0]` – Output of ALU
+
+## ALU Operations
+
+* **ALU_1:**
+
+| State | OP Bit | Operation |
+|------|--------|----------|
+| 0    | OP(0)  | A + B |
+| 1    | OP(1)  | A - B |
+| 2    | OP(2)  | A AND B |
+| 3    | OP(3)  | A OR B |
+| 4    | OP(4)  | A XOR B |
+| 5    | OP(5)  | NOT (A AND B) |
+| 6    | OP(6)  | NOT (A OR B) |
+| 7    | OP(7)  | A + 1 |
+| 8    | OP(8)  | B + 1 |
+
+* **ALU_2:**
+  
+| State | OP Bit | Operation |
+|------|--------|----------|
+| 0    | OP(0)  | Rotate A right by 4 bits |
+| 1    | OP(1)  | A XOR B |
+| 2    | OP(2)  | Inverse bit significance of B |
+| 3    | OP(3)  | (A + B) - 2 |
+| 4    | OP(4)  | Rotate B left by 2 bits|
+| 5    | OP(5)  | Invert even bits of B |
+| 6    | OP(6)  | Swap A and B’s lower 4 bits) |
+| 7    | OP(7)  | Shift B to the right by 2 bits, input bit = 0 |
+| 8    | OP(8)  | Invert 4 lower bits of A |
+
+## Simulation
+
+The design was verified using waveform simulation in Quartus to confirm correct ALU outputs for each state.
+
+## Results
+
+- Successfully implemented and tested on DE2 FPGA board  
+- Verified correct operation across all FSM states using simulation  
+- Demonstrated separation of control path and datapath in a working system
