@@ -1,2 +1,4 @@
-# 8-Bit-ALU-Processor-Design
-Micro-coded 8 Bit ALU with FSM control implemented in VHDL and tested on FPGA
+### 8-Bit Micro-coded ALU Processor
+
+This project implements a simple 8-bit processor datapath using a micro-coded control architecture. I built this system using VHDL and combined it with an FSM (Finite State Machine), decoder, registers, and an ALU in order to execute multiple operations. 
+
