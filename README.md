@@ -3,8 +3,8 @@ In this project, I designed and implemented a microcoded 8-bit processing unit o
 
 ## Key Implementation Details
 
-*Hardware Platform: Leveraged the Terasic DE2 board, utilizing physical switches for operant inputs (A and B) and LEDs/7-segment displays for a real-time state and output visualization.
+* Hardware Platform: Leveraged the Terasic DE2 board, utilizing physical switches for operant inputs (A and B) and LEDs/7-segment displays for a real-time state and output visualization.
 
-*Control Path: Developed a 4-bit FSM that cycles through instruction indices. A 4x16 decoder processes this output to generate a one-hot microcode control bus, which enables specific ALU functions.
+* Control Path: Developed a 4-bit FSM that cycles through instruction indices. A 4x16 decoder processes this output to generate a one-hot microcode control bus, which enables specific ALU functions.
 
 *
