@@ -6,8 +6,8 @@ entity alu_core is
     port (
     A                    :    in        std_logic_vector(7 downto 0);
     B                    :    in        std_logic_vector(7 downto 0);
-    OP                    :    in        std_logic_vector(15 downto 0);
-    Result            :    out        std_logic_vector(7 downto 0)
+    OP                   :    in        std_logic_vector(15 downto 0);
+    Result               :    out        std_logic_vector(7 downto 0)
     );
 end entity alu_core;
     
