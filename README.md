@@ -3,3 +3,5 @@ This project implements a simple 8-bit processor datapath using a micro-coded co
 
 ## Description
 This project implements an 8-bit arithmetic logic unit (ALU) as part of a simple processor design. The system is controlled by the FSM and uses a micro-coded control approach to execute operations.
+
+The design demonstrates how a processor datapath and control unit interact to perform arithmetic, logic, and bit-level operations.
