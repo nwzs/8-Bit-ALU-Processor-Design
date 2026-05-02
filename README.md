@@ -1,3 +1,5 @@
+**Note:** This repository currently contains the core ALU logic. The full project environment and control unit (FSM) files will be uploaded once migrated from the lab workstation.
+
 # 8-Bit Micro-coded ALU Processor
 This project implements an 8-bit microcoded processor on an FPGA, using a finite state machine (FSM) to control arithmetic and logic operations across a shared datapath.
 
